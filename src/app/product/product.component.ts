@@ -18,8 +18,8 @@ export class ProductComponent implements OnInit {
   }
 
   addToBasketHandler(){
-  	console.log(this.product.price);
   	this.addToBasket.emit(this.product.price);
+  	this.product.stock -= 1;
   }
 
 }
