@@ -13,7 +13,7 @@ import { ProductService, CustomerService } from './services';
 import { UpperCasePipe } from '@angular/common';
 import { ProductSortPipe } from './pipes/product-sort.pipe';
 
-let footerText: string = "Copyright Your Website 2016";
+let footerText = 'Copyright Your Website 2016';
 
 @NgModule({
   declarations: [

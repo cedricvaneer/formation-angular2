@@ -1,20 +1,17 @@
 export class Product {
-	// title: string;
-	// description: string;
-	// photo: string;
-	// price: number;
-	constructor(public title: string,
-				public description: string,
-				public photo: string,
-				public price: number,
-				public stock: number){
-	}
-
-  isLast(): boolean{
-  	return this.stock == 1;
+  constructor(
+    public title: string,
+    public description: string,
+    public photo: string,
+    public price: number,
+    public stock: number) {
   }
 
-  isInStock(): boolean{
-  	return this.stock > 0;
+  isLast(): boolean {
+    return this.stock === 1;
+  }
+
+  isInStock(): boolean {
+    return this.stock > 0;
   }
 }

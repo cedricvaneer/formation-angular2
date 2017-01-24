@@ -6,16 +6,16 @@ import { Product } from '../model/product';
 })
 export class ProductSortPipe implements PipeTransform {
 
-  transform(productArrayInput: Product[], sortCriteria: string = 'title'): Product[] {
-  	return productArrayInput.sort(function(a, b){
-  		if (a[sortCriteria] < b[sortCriteria]){
-  			return -1;
-  		}
-  		if (a[sortCriteria] > b[sortCriteria]){
-  			return 1;
-  		}
-  		return 0;
-  	});
+  transform(productArrayInput: Product[], sortCriteria = 'title'): Product[] {
+    return productArrayInput.sort(function(a, b){
+      if (a[sortCriteria] < b[sortCriteria]) {
+        return -1;
+      }
+      if (a[sortCriteria] > b[sortCriteria]) {
+        return 1;
+      }
+      return 0;
+    });
   }
 
 }
