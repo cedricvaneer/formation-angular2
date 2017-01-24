@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Product } from './model/product';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'App works !';
+  total: number = 0;
+  products: Product[];
+
+  constructor(){
+
+  	this.products = [];
+
+  	this.products.push(new Product("Product 1", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "http://placehold.it/800x500", 10));
+  	this.products.push(new Product("Product 2", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "http://placehold.it/800x500", 20));
+  	this.products.push(new Product("Product 3", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "http://placehold.it/800x500", 30));
+  	this.products.push(new Product("Product 4", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "http://placehold.it/800x500", 40));
+  }
+
+  priceUpdate(price){
+  	console.log(price);
+  	this.total += price;
+  }
 }
