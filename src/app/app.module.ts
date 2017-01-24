@@ -8,6 +8,10 @@ import { MenuComponent } from './menu/menu.component';
 import { ProductComponent } from './product/product.component';
 import { FooterComponent } from './footer/footer.component';
 
+import { ProductService, CustomerService } from './services';
+
+let footerText: string = "Copyright Your Website 2016";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +24,7 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [ProductService, CustomerService, {provide: 'footerText', useValue: footerText}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

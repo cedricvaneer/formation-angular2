@@ -4,7 +4,7 @@
 
       <header class="jumbotron hero-spacer">
           <h1>Bienvenue sur Zenika Ecommerce</h1>
-          <p>Votre panier s'élève à {{total}} €</p>
+          <p>Votre panier s'élève à {{getTotal()}} €</p>
           <p><a class="btn btn-primary btn-large">Voir mon panier</a></p>
       </header>
 
@@ -18,14 +18,12 @@
 
       <div class="row text-center">
       	<template ngFor let-product [ngForOf]="products">
-	      	<app-product *ngIf="product.isInStock()" [product]=product (addToBasket)="priceUpdate($event)"></app-product>
+	      	<app-product *ngIf="isAvailable(product.title)" [product]=product (addToBasket)="priceUpdate($event)"></app-product>
       	</template>
       </div>
 
       <hr>
 
-      <footer>
-          Copyright &copy; Your Website 2016
-      </footer>
+      <app-footer></app-footer>
 
     </div>
