@@ -17,10 +17,9 @@
       </div>
 
       <div class="row text-center">
-      	<app-product [product]="products[0]" (addToBasket)="priceUpdate($event)"></app-product>
-      	<app-product [product]="products[1]" (addToBasket)="priceUpdate($event)"></app-product>
-      	<app-product [product]="products[2]" (addToBasket)="priceUpdate($event)"></app-product>
-      	<app-product [product]="products[3]" (addToBasket)="priceUpdate($event)"></app-product>
+      	<template ngFor let-product [ngForOf]="products">
+	      	<app-product *ngIf="product.isInStock()" [product]=product (addToBasket)="priceUpdate($event)"></app-product>
+      	</template>
       </div>
 
       <hr>
