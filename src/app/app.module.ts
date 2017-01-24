@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
@@ -10,6 +10,9 @@ import { FooterComponent } from './footer/footer.component';
 
 import { ProductService, CustomerService } from './services';
 
+import { UpperCasePipe } from '@angular/common';
+import { ProductSortPipe } from './pipes/product-sort.pipe';
+
 let footerText: string = "Copyright Your Website 2016";
 
 @NgModule({
@@ -17,14 +20,20 @@ let footerText: string = "Copyright Your Website 2016";
     AppComponent,
     MenuComponent,
     ProductComponent,
-    FooterComponent
+    FooterComponent,
+    ProductSortPipe,
+    ProductSortPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [ProductService, CustomerService, {provide: 'footerText', useValue: footerText}],
+  providers: [ProductService,
+              CustomerService,
+              UpperCasePipe,
+              {provide: 'footerText', useValue: footerText},
+              {provide: LOCALE_ID, useValue: 'fr-FR' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

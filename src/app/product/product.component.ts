@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Product } from '../model/product'
 import { ProductService, CustomerService } from '../services'
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-product',

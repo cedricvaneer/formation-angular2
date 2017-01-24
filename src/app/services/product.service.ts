@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../model/product';
+import { UpperCasePipe } from '@angular/common';
 
 @Injectable()
 export class ProductService {
 
   products: Product[];
 
-  constructor() {
+  constructor(public upper: UpperCasePipe) {
   	this.products = [];
-  	this.products.push(new Product("Product 1", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "http://placehold.it/800x500", 10, 0));
-  	this.products.push(new Product("Product 2", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "http://placehold.it/800x500", 20, 1));
-  	this.products.push(new Product("Product 3", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "http://placehold.it/800x500", 30, 2));
-  	this.products.push(new Product("Product 4", "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "http://placehold.it/800x500", 40, 3));
+  	this.products.push(new Product(upper.transform("Product 1"), "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "http://placehold.it/800x500", 10, 0));
+  	this.products.push(new Product(upper.transform("Product 2"), "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "http://placehold.it/800x500", 20, 1));
+  	this.products.push(new Product(upper.transform("Product 3"), "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "http://placehold.it/800x500", 30, 2));
+  	this.products.push(new Product(upper.transform("Product 4"), "Lorem ipsum dolor sit amet, consectetur adipisicing elit.", "http://placehold.it/800x500", 40, 3));
   }
 
   getProducts(): Product[]{
