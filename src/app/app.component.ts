@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from './model/product';
-import { ProductService, CustomerService } from './services'
+import { ProductService, CustomerService } from './services';
 
 @Component({
   selector: 'app-root',
@@ -11,19 +11,19 @@ export class AppComponent {
   total: number = 0;
   products: Product[];
 
-  constructor(public productService: ProductService, public customerService: CustomerService){
-    this.products = this.productService.getProducts();
+  constructor(public productService: ProductService, public customerService: CustomerService) {
+    productService.getProducts().subscribe(products => this.products = products);
   }
 
-  priceUpdate(price){
-  	this.total += price;
+  priceUpdate(price) {
+    this.total += price;
   }
 
-  isAvailable(productTitle: string){
+  isAvailable(productTitle: string) {
     return this.productService.isAvailable(productTitle);
   }
 
-  getTotal(){
+  getTotal() {
     return this.customerService.getTotal();
   }
 }
