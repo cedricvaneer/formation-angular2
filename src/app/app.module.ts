@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -12,8 +13,16 @@ import { ProductService, CustomerService } from './services';
 
 import { UpperCasePipe } from '@angular/common';
 import { ProductSortPipe } from './pipes/product-sort.pipe';
+import { HomeComponent } from './home/home.component';
+import { BasketComponent } from './basket/basket.component';
 
 let footerText = 'Copyright Your Website 2016';
+
+export const routes: Routes = [
+  { path: 'home',  component: HomeComponent },
+  { path: 'basket', component: BasketComponent },
+  { path: '**', redirectTo: 'home'} // default
+];
 
 @NgModule({
   declarations: [
@@ -22,12 +31,15 @@ let footerText = 'Copyright Your Website 2016';
     ProductComponent,
     FooterComponent,
     ProductSortPipe,
-    ProductSortPipe
+    ProductSortPipe,
+    HomeComponent,
+    BasketComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [ProductService,
               CustomerService,
