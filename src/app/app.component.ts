@@ -12,7 +12,7 @@ export class AppComponent {
   products: Product[];
 
   constructor(public productService: ProductService, public customerService: CustomerService) {
-    this.products = this.productService.getProducts();
+    productService.getProducts().subscribe(products => this.products = products);
   }
 
   priceUpdate(price) {

@@ -6,7 +6,7 @@ import { Product } from '../model/product';
 })
 export class ProductSortPipe implements PipeTransform {
 
-  transform(productArrayInput: Product[], sortCriteria = 'title'): Product[] {
+  transform(productArrayInput = [], sortCriteria = 'title'): Product[] {
     return productArrayInput.sort(function(a, b){
       if (a[sortCriteria] < b[sortCriteria]) {
         return -1;

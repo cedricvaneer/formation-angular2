@@ -20,8 +20,9 @@ export class ProductComponent implements OnInit {
   }
 
   addToBasketHandler() {
-    this.customerService.addProduct(this.product);
-    this.decreaseStock(this.product.title);
+    this.customerService.addProduct(this.product).subscribe(
+      response => this.decreaseStock(this.product.title)
+    );
   	// this.addToBasket.emit(this.product.price);
   	// this.product.stock -= 1;
   }
