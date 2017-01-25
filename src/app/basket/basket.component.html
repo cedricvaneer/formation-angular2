@@ -1,1 +1,37 @@
-{{ products | json }}
+<div class="panel panel-default">
+    <div class="panel-heading">Basket</div>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let product of basket">
+            {{product.title}} <span class="label label-primary pull-right">{{product.price}}€</span>
+        </li>
+    </ul>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Order</div>
+    <div class="panel-body">
+        <form (submit)='checkOut()' #basketForm="ngForm" novalidate>
+            <div class="form-group" [ngClass]="{'has-error': name.dirty && name.invalid}">
+                <label class="control-label" for="name">Name</label>
+                <input type="text" id="name" class="form-control" name="name" #name="ngModel" required [(ngModel)]="customer.name">
+            </div>
+
+            <div class="form-group" [ngClass]="{'has-error': address.dirty && address.invalid}">
+                <label class="control-label" for="address">Address</label>
+                <textarea id="address" class="form-control" name="address" #address="ngModel" required [(ngModel)]="customer.address"></textarea>
+            </div>
+
+            <div class="form-group" [ngClass]="{'has-error': creditCard.dirty && creditCard.invalid}">
+                <label class="control-label" for="creditCard">Credit card number</label>
+                <input id="creditCard" class="form-control" name="creditCard" #creditCard="ngModel" required pattern="^[0-9]{3}-[0-9]{3}$" [(ngModel)]="customer.creditCard">
+                <span [hidden]='creditCard.pristine || creditCard.valid'>Invalid pattern. Example : 123-456</span>
+            </div>
+
+            <div class="col-xs-12">
+                <button type="submit" class="btn btn-success pull-right" [disabled]='basketForm.invalid'>
+                    Validate
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
