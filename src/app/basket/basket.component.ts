@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { CustomerService } from '../services/customer.service';
 import { Product } from '../model/product';
+import { Customer } from '../model/Customer';
 
 @Component({
   selector: 'app-basket',
@@ -9,17 +11,23 @@ import { Product } from '../model/product';
 })
 export class BasketComponent implements OnInit {
 
-  products: Product[];
+  basket: Product[];
+  customer: Customer;
 
-  constructor(private customerService: CustomerService) {
+  constructor(private customerService: CustomerService, private router: Router) {
   }
 
   getBasket() {
-    this.customerService.getBasket().subscribe(products => this.products = products);
+    this.customerService.getBasket().subscribe(products => this.basket = products);
   }
 
   ngOnInit() {
     this.getBasket();
+    this.customer = new Customer('', '', '');
+  }
+
+  checkOut() {
+    this.customerService.checkOut(this.customer).subscribe(() => this.router.navigate(['']));
   }
 
 }

@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
+import { Customer } from '../model/Customer';
+
 @Injectable()
 export class CustomerService {
 
@@ -41,5 +43,9 @@ export class CustomerService {
       });
     })
     .do(products => this.products = products);
+  }
+
+  checkOut(customer: Customer) {
+    return this.http.post('http://localhost:8080/rest/basket/confirm', customer);
   }
 }
